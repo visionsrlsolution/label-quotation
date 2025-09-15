@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_label_carta_user,label.carta.user,model_label_carta,base.group_user,1,1,1,0
+access_label_carta_manager,label.carta.manager,model_label_carta,base.group_system,1,1,1,1
+access_label_fustella_user,label.fustella.user,model_label_fustella,base.group_user,1,1,1,0
+access_label_fustella_manager,label.fustella.manager,model_label_fustella,base.group_system,1,1,1,1
+access_label_macchina_user,label.macchina.user,model_label_macchina,base.group_user,1,1,1,0
+access_label_macchina_manager,label.macchina.manager,model_label_macchina,base.group_system,1,1,1,1
+access_label_quotation_user,label.quotation.user,model_label_quotation,base.group_user,1,1,1,0
+access_label_quotation_manager,label.quotation.manager,model_label_quotation,base.group_system,1,1,1,1
+access_label_quotation_report_user,label.quotation.report.user,model_label_quotation_report,base.group_user,1,0,0,0
+access_label_quotation_report_manager,label.quotation.report.manager,model_label_quotation_report,base.group_system,1,1,1,1
+access_label_config_user,label.config.user,model_label_config,base.group_user,1,0,0,0
+access_label_config_manager,label.config.manager,model_label_config,base.group_system,1,1,1,1

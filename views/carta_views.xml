@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Paper Material Tree View -->
+    <record id="view_carta_tree" model="ir.ui.view">
+        <field name="name">label.carta.tree</field>
+        <field name="model">label.carta</field>
+        <field name="arch" type="xml">
+            <tree string="Paper Materials">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="paper_type"/>
+                <field name="grammage"/>
+                <field name="thickness"/>
+                <field name="adhesive_type"/>
+                <field name="cost_per_sqm"/>
+                <field name="supplier_id"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Paper Material Form View -->
+    <record id="view_carta_form" model="ir.ui.view">
+        <field name="name">label.carta.form</field>
+        <field name="model">label.carta</field>
+        <field name="arch" type="xml">
+            <form string="Paper Material">
+                <header>
+                    <button name="toggle_active" type="object" string="Archive" class="btn-secondary" invisible="not active"/>
+                    <button name="toggle_active" type="object" string="Unarchive" class="btn-secondary" invisible="active"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(label_quotation.action_label_quotation)d" type="action" class="oe_stat_button" icon="fa-calculator">
+                            <field name="id" widget="statinfo" string="Quotations"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Paper Material Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="paper_type"/>
+                            <field name="grammage"/>
+                            <field name="thickness"/>
+                            <field name="adhesive_type"/>
+                            <field name="adhesive_strength"/>
+                        </group>
+                        <group>
+                            <field name="max_width"/>
+                            <field name="max_length"/>
+                            <field name="cost_per_sqm"/>
+                            <field name="supplier_id"/>
+                            <field name="supplier_code"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" placeholder="Additional notes about the paper material..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Paper Material Search View -->
+    <record id="view_carta_search" model="ir.ui.view">
+        <field name="name">label.carta.search</field>
+        <field name="model">label.carta</field>
+        <field name="arch" type="xml">
+            <search string="Search Paper Materials">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="paper_type"/>
+                <field name="supplier_id"/>
+                <separator/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+                <filter string="Thermal" name="thermal" domain="[('paper_type', '=', 'thermal')]"/>
+                <filter string="Vellum" name="vellum" domain="[('paper_type', '=', 'vellum')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Paper Type" name="group_paper_type" context="{'group_by': 'paper_type'}"/>
+                    <filter string="Supplier" name="group_supplier" context="{'group_by': 'supplier_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Paper Material Action -->
+    <record id="action_carta" model="ir.actions.act_window">
+        <field name="name">Paper Materials</field>
+        <field name="res_model">label.carta</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_carta_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first paper material!
+            </p>
+            <p>
+                Define the paper materials used for label production including
+                specifications, costs, and supplier information.
+            </p>
+        </field>
+    </record>
+
+    <!-- Paper Material Menu -->
+    <menuitem id="menu_carta"
+              name="Paper Materials"
+              parent="label_quotation.menu_label_quotation_main"
+              action="action_carta"
+              sequence="10"/>
+</odoo>

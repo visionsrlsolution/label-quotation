@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_label_quotation_main"
+              name="Label Quotation"
+              sequence="10"
+              web_icon="label_quotation,static/description/icon.png"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_label_quotation_config"
+              name="Configuration"
+              parent="menu_label_quotation_main"
+              sequence="100"/>
+</odoo>

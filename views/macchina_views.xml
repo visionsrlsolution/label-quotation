@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Machine Tree View -->
+    <record id="view_macchina_tree" model="ir.ui.view">
+        <field name="name">label.macchina.tree</field>
+        <field name="model">label.macchina</field>
+        <field name="arch" type="xml">
+            <tree string="Machines">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="machine_type"/>
+                <field name="model"/>
+                <field name="max_speed"/>
+                <field name="max_web_width"/>
+                <field name="location"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Machine Form View -->
+    <record id="view_macchina_form" model="ir.ui.view">
+        <field name="name">label.macchina.form</field>
+        <field name="model">label.macchina</field>
+        <field name="arch" type="xml">
+            <form string="Machine">
+                <header>
+                    <button name="toggle_active" type="object" string="Archive" class="btn-secondary" invisible="not active"/>
+                    <button name="toggle_active" type="object" string="Unarchive" class="btn-secondary" invisible="active"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(label_quotation.action_label_quotation)d" type="action" class="oe_stat_button" icon="fa-calculator">
+                            <field name="id" widget="statinfo" string="Quotations"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Machine Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="machine_type"/>
+                            <field name="manufacturer"/>
+                            <field name="model"/>
+                            <field name="max_speed"/>
+                            <field name="max_web_width"/>
+                        </group>
+                        <group>
+                            <field name="setup_time"/>
+                            <field name="setup_cost_per_hour"/>
+                            <field name="production_cost_per_hour"/>
+                            <field name="overhead_percentage"/>
+                            <field name="efficiency_factor"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="maintenance_cost_per_month"/>
+                            <field name="depreciation_cost_per_month"/>
+                            <field name="energy_cost_per_hour"/>
+                            <field name="operator_cost_per_hour"/>
+                        </group>
+                        <group>
+                            <field name="location"/>
+                            <field name="installation_date"/>
+                            <field name="last_maintenance_date"/>
+                            <field name="next_maintenance_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" placeholder="Additional notes about the machine..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Machine Search View -->
+    <record id="view_macchina_search" model="ir.ui.view">
+        <field name="name">label.macchina.search</field>
+        <field name="model">label.macchina</field>
+        <field name="arch" type="xml">
+            <search string="Search Machines">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="machine_type"/>
+                <field name="manufacturer"/>
+                <field name="model"/>
+                <field name="location"/>
+                <separator/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+                <filter string="Vega+" name="vega_plus" domain="[('machine_type', '=', 'vega_plus')]"/>
+                <filter string="Digicompact" name="digicompact" domain="[('machine_type', '=', 'digicompact')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Machine Type" name="group_machine_type" context="{'group_by': 'machine_type'}"/>
+                    <filter string="Manufacturer" name="group_manufacturer" context="{'group_by': 'manufacturer'}"/>
+                    <filter string="Location" name="group_location" context="{'group_by': 'location'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Machine Action -->
+    <record id="action_macchina" model="ir.actions.act_window">
+        <field name="name">Machines</field>
+        <field name="res_model">label.macchina</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_macchina_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first machine!
+            </p>
+            <p>
+                Define the die-cutting machines used for label production including
+                specifications, costs, and operational parameters.
+            </p>
+        </field>
+    </record>
+
+    <!-- Machine Menu -->
+    <menuitem id="menu_macchina"
+              name="Machines"
+              parent="label_quotation.menu_label_quotation_main"
+              action="action_macchina"
+              sequence="30"/>
+</odoo>

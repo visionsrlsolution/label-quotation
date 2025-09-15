@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Die Tree View -->
+    <record id="view_fustella_tree" model="ir.ui.view">
+        <field name="name">label.fustella.tree</field>
+        <field name="model">label.fustella</field>
+        <field name="arch" type="xml">
+            <tree string="Dies">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="label_width"/>
+                <field name="label_height"/>
+                <field name="interspace"/>
+                <field name="tracks"/>
+                <field name="die_type"/>
+                <field name="cost"/>
+                <field name="status"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Die Form View -->
+    <record id="view_fustella_form" model="ir.ui.view">
+        <field name="name">label.fustella.form</field>
+        <field name="model">label.fustella</field>
+        <field name="arch" type="xml">
+            <form string="Die">
+                <header>
+                    <button name="toggle_active" type="object" string="Archive" class="btn-secondary" invisible="not active"/>
+                    <button name="toggle_active" type="object" string="Unarchive" class="btn-secondary" invisible="active"/>
+                    <button name="action_update_usage" type="object" string="Update Usage" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(label_quotation.action_label_quotation)d" type="action" class="oe_stat_button" icon="fa-calculator">
+                            <field name="id" widget="statinfo" string="Quotations"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Die Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="label_width"/>
+                            <field name="label_height"/>
+                            <field name="interspace"/>
+                            <field name="tracks"/>
+                            <field name="die_type"/>
+                            <field name="die_material"/>
+                        </group>
+                        <group>
+                            <field name="precision"/>
+                            <field name="max_web_width"/>
+                            <field name="cost"/>
+                            <field name="amortization_quantity"/>
+                            <field name="amortized_cost_per_unit" readonly="1"/>
+                            <field name="status"/>
+                            <field name="special_features"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="creation_date"/>
+                            <field name="last_used_date"/>
+                            <field name="usage_count"/>
+                        </group>
+                        <group>
+                            <field name="supplier_id"/>
+                            <field name="supplier_code"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" placeholder="Additional notes about the die..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Die Search View -->
+    <record id="view_fustella_search" model="ir.ui.view">
+        <field name="name">label.fustella.search</field>
+        <field name="model">label.fustella</field>
+        <field name="arch" type="xml">
+            <search string="Search Dies">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="die_type"/>
+                <field name="status"/>
+                <field name="supplier_id"/>
+                <separator/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+                <filter string="Present" name="present" domain="[('status', '=', 'present')]"/>
+                <filter string="Erroneous" name="erroneous" domain="[('status', '=', 'erroneous')]"/>
+                <filter string="Maintenance" name="maintenance" domain="[('status', '=', 'maintenance')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Die Type" name="group_die_type" context="{'group_by': 'die_type'}"/>
+                    <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                    <filter string="Supplier" name="group_supplier" context="{'group_by': 'supplier_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Die Action -->
+    <record id="action_fustella" model="ir.actions.act_window">
+        <field name="name">Dies</field>
+        <field name="res_model">label.fustella</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_fustella_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first die!
+            </p>
+            <p>
+                Define the dies used for label cutting including dimensions,
+                costs, and specifications.
+            </p>
+        </field>
+    </record>
+
+    <!-- Die Menu -->
+    <menuitem id="menu_fustella"
+              name="Dies"
+              parent="label_quotation.menu_label_quotation_main"
+              action="action_fustella"
+              sequence="20"/>
+</odoo>
