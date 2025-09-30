@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Production Analysis Report Form View -->
+    <record id="view_production_analysis_report_form" model="ir.ui.view">
+        <field name="name">production.analysis.report.form</field>
+        <field name="model">production.analysis.report</field>
+        <field name="arch" type="xml">
+            <form string="Production Analysis Report">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Production Analysis</h1>
+                        <p>Generate comprehensive production reports and analytics</p>
+                    </div>
+                    
+                    <group>
+                        <group string="Report Parameters">
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="report_type"/>
+                        </group>
+                        <group string="Filters (Optional)">
+                            <field name="machine_ids" widget="many2many_tags"/>
+                            <field name="material_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Report Results" invisible="not report_html">
+                            <field name="report_html" widget="html" readonly="1"/>
+                        </page>
+                        <page string="Raw Data" invisible="not report_data">
+                            <field name="report_data" readonly="1" widget="text"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button name="action_generate_report" type="object" string="Generate Report" class="btn-primary"/>
+                    <button name="action_export_pdf" type="object" string="Export PDF" 
+                            class="btn-secondary" invisible="not report_html"/>
+                    <button special="cancel" string="Close" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Production Analysis Report -->
+    <record id="action_production_analysis_report" model="ir.actions.act_window">
+        <field name="name">Production Analysis</field>
+        <field name="res_model">production.analysis.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu Item for Production Reports -->
+</odoo>
+

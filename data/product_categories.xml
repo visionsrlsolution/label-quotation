@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Label Materials Category -->
+        <record id="product_category_label_materials" model="product.category">
+            <field name="name">Label Materials</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+        </record>
+
+        <!-- Label Machines Category -->
+        <record id="product_category_label_machines" model="product.category">
+            <field name="name">Label Machines</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+        </record>
+
+        <!-- Label Dies Category -->
+        <record id="product_category_label_dies" model="product.category">
+            <field name="name">Label Dies</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+        </record>
+
+        <!-- Label Services Category -->
+        <record id="product_category_label_services" model="product.category">
+            <field name="name">Label Services</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+        </record>
+    </data>
+</odoo>

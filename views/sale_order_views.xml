@@ -21,9 +21,9 @@
         </field>
     </record>
 
-    <!-- Sale Order Line Tree View Extension -->
-    <record id="view_sale_order_line_tree_label_quotation" model="ir.ui.view">
-        <field name="name">sale.order.line.tree.label.quotation</field>
+    <!-- Sale Order Line List View Extension -->
+    <record id="view_sale_order_line_list_label_quotation" model="ir.ui.view">
+        <field name="name">sale.order.line.list.label.quotation</field>
         <field name="model">sale.order.line</field>
         <field name="inherit_id" ref="sale.view_order_line_tree"/>
         <field name="arch" type="xml">

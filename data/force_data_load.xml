@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Force load product categories -->
+        <function model="ir.model.data" name="_load_data">
+            <value model="ir.model.data" eval="[('module', '=', 'label_quotation'), ('model', '=', 'product.category')]"/>
+        </function>
+        
+        <!-- Force load products -->
+        <function model="ir.model.data" name="_load_data">
+            <value model="ir.model.data" eval="[('module', '=', 'label_quotation'), ('model', '=', 'product.template')]"/>
+        </function>
+    </data>
+</odoo>

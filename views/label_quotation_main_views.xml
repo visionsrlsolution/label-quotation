@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Dashboard Action -->
+    <record id="action_label_quotation_dashboard" model="ir.actions.act_window">
+        <field name="name">Label Quotation Dashboard</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">['|', ('is_label_material', '=', True), ('is_label_machine', '=', True), ('is_label_die', '=', True)]</field>
+        <field name="context">{'search_default_label_materials': 1}</field>
+    </record>
+
+    <!-- Main Menu Item -->
+    <menuitem id="menu_label_quotation_dashboard" 
+              name="Label Quotation" 
+              action="action_label_quotation_dashboard" 
+              sequence="15"/>
+
+    <!-- Sub-menu Items -->
+    <menuitem id="menu_label_materials" 
+              name="Label Materials" 
+              parent="menu_label_quotation_dashboard" 
+              action="action_label_materials" 
+              sequence="10"/>
+
+    <menuitem id="menu_label_machines" 
+              name="Label Machines" 
+              parent="menu_label_quotation_dashboard" 
+              action="action_label_machines" 
+              sequence="20"/>
+
+    <menuitem id="menu_label_dies" 
+              name="Label Dies" 
+              parent="menu_label_quotation_dashboard" 
+              action="action_label_dies" 
+              sequence="30"/>
+</odoo>

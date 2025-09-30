@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Template Form View for Label Materials -->
+    <record id="product_template_label_material_form" model="ir.ui.view">
+        <field name="name">product.template.label.material.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page string="Label Material Properties" invisible="not is_label_material">
+                    <group>
+                        <group string="Basic Properties">
+                            <field name="paper_type"/>
+                            <field name="grammage"/>
+                            <field name="thickness"/>
+                            <field name="adhesive_type"/>
+                            <field name="adhesive_strength"/>
+                        </group>
+                        <group string="Dimensions">
+                            <field name="max_width"/>
+                            <field name="max_length"/>
+                            <field name="roll_width_standard"/>
+                            <field name="roll_length_standard"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Action for Label Materials -->
+    <record id="action_label_materials" model="ir.actions.act_window">
+        <field name="name">Label Materials</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_label_material', '=', True)]</field>
+        <field name="context">{'default_is_label_material': True, 'default_categ_id': ref('product_category_label_materials')}</field>
+    </record>
+
+    <!-- Action for Label Machines -->
+    <record id="action_label_machines" model="ir.actions.act_window">
+        <field name="name">Label Machines</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_label_machine', '=', True)]</field>
+        <field name="context">{'default_is_label_machine': True, 'default_categ_id': ref('product_category_label_machines')}</field>
+    </record>
+
+    <!-- Action for Label Dies -->
+    <record id="action_label_dies" model="ir.actions.act_window">
+        <field name="name">Label Dies</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_label_die', '=', True)]</field>
+        <field name="context">{'default_is_label_die': True, 'default_categ_id': ref('product_category_label_dies')}</field>
+    </record>
+</odoo>

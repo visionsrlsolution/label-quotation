@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" fill="#875A7B" rx="16"/>
+  
+  <!-- Label shape -->
+  <rect x="20" y="30" width="88" height="68" fill="#FFFFFF" rx="8"/>
+  
+  <!-- Label text lines -->
+  <rect x="30" y="45" width="68" height="4" fill="#875A7B" rx="2"/>
+  <rect x="30" y="55" width="48" height="4" fill="#875A7B" rx="2"/>
+  <rect x="30" y="65" width="58" height="4" fill="#875A7B" rx="2"/>
+  
+  <!-- Quotation symbol -->
+  <circle cx="100" cy="50" r="12" fill="#FF6B6B"/>
+  <text x="100" y="55" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Q</text>
+  
+  <!-- Production elements -->
+  <rect x="25" y="85" width="8" height="8" fill="#4ECDC4" rx="2"/>
+  <rect x="40" y="85" width="8" height="8" fill="#45B7D1" rx="2"/>
+  <rect x="55" y="85" width="8" height="8" fill="#96CEB4" rx="2"/>
+</svg>

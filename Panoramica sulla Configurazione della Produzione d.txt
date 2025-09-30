@@ -1,0 +1,76 @@
+Panoramica sulla Configurazione della Produzione di Etichette in Odoo Questo documento descrive in dettaglio un flusso di lavoro per la configurazione, la quotazione e la produzione di etichette personalizzate (ad esempio, etichette adesive in bobine) in un sistema basato su Odoo per un'azienda di stampa/imballaggio. Si concentra sull'automazione delle specifiche tecniche, dei calcoli dei costi e della pianificazione della produzione, consentendo override manuali. Il processo integra configurazioni di macchine, selezione dei materiali, fustellatura, confezionamento e quotazione con margini. I link chiave fanno riferimento a strumenti interni (ad es., per tagli di bobina, macchine e cilindri).Il sistema genera automaticamente descrizioni, costi e anteprime in base a input come dimensioni dell'etichetta (es. 55x25 mm), materiale e macchina. Gestisce casi limite come dimensioni non standard o diluizione dei costi (es. ammortamento dei costi della fustella sulle quotazioni).Risorse Chiave di Configurazione
+?Tagli di Bobina (TagliBobina): Gestisci e modifica le opzioni di taglio bobina.
+?Elenco Macchine: Visualizza e seleziona le macchine di produzione disponibili.
+Cilindri per Etichette: Seleziona i cilindri necessari quando si sceglie un tipo di etichetta (utilizzati nella configurazione della fustellatura).
+
+Flusso Principale: Creazione di una Nuova Quotazione per Etichette (Preventivo)
+1.Avvio Nuova Etichetta nella Quotazione (Scheda: Configura Nuova Etichetta) 
+?Se non esiste un'etichetta corrispondente, crea automaticamente un nuovo articolo. 
+?Generazione Descrizione Articolo: 
+?Nome in Grassetto: Generato automaticamente da dimensioni etichetta + tipo materiale generico (es. "55x25 - Carta Neutra FSC"). Modifiche manuali consentite. 
+?Descrizione Estesa: Popola automaticamente tutte le specifiche tecniche (es. materiale, spessore, dettagli fustella). Flag per abilitare il riempimento automatico.
+2.Selezione Materiale (Schermata Fronte Etichetta/Materiale) 
+?Scegli il materiale base (es. carta Vellum). 
+?Il sistema nasconde varianti irrilevanti e suggerisce opzioni che corrispondono alla descrizione (es. tipi contenenti "Vellum"). 
+?Inserisce automaticamente: 
+?Spessore in base al diametro bobina. 
+?Fustella e grammatura (peso per m²) per il calcolo del peso finale della bobina.
+3.Configurazione Formato e Fustellatura 
+?Specifica il formato (es. larghezza x passo: 55x25 mm). Se non esiste una fustella, inserisci larghezza/passo personalizzati. 
+?Seleziona macchina: Il sistema propone tipo di taglio carta (con/senza sfrido), calcola automaticamente le spalle, impone larghezza spalla minima e offre opzioni piste con interspazio. 
+?Integrazione Cilindro-Fustella (Passo Critico): 
+?Definisci "passo": Spazio tra etichette, basato sul montaggio sul cilindro. 
+?Il sistema suggerisce posizioni "Z" disponibili sul cilindro. 
+?Dalla Z selezionata: Calcola automaticamente pose (ripetizioni per cilindro) e gap. Compila il passo in automatico. 
+?Dimensione Finale Fustellatura: Pose × Dimensione Etichetta = Totale mm per fustellatura.
+4.Confezionamento 
+?Dopo aver selezionato carta, fascia, macchina e fustella: Decidi il numero di rotoli. 
+?Scegli tipo anima (core). 
+?Proponi automaticamente: Larghezza rotolo + mm interspazio (impostato 1 mm più basso per tolleranza). 
+?Seleziona: Diametro o numero etichette per rotolo (o diametro massimo). 
+?Calcoli Automatici (usando spessore): 
+?Numero etichette per rotolo (con arrotondamento). 
+?Peso bobina. 
+?Metri di carta per bobina.
+5.Inscatolamento 
+?Preleva diametro bobina e altezza dai parametri, aggiunge +10 mm di tolleranza (unilaterale). 
+?Anteprima in tempo reale dell'inserimento in scatola. 
+?Calcola automaticamente: Peso scatola in base al numero rotoli. 
+?Genera distinta base per scarico magazzino.
+6.Aggiustamenti Costi 
+?Opzione per spalare i costi di trasporto sulla quotazione.
+Finalizzazione Quotazione e Produzione
+1.Quantità e Multipli 
+?Imposta totale etichette (es. 5.000 tassative). Se non multiplo della capacità bobina, propone il multiplo successivo che include il numero. 
+?Seleziona macchina (timing: prima o dopo quantità? Da chiarire). 
+?Il quotatore specifica numero quotazioni per fascia quantità (es. 1M, 5M, 10M etichette), generando automaticamente schede di produzione.
+2.Ottimizzazioni Centri di Costo 
+?Riduci/diluisc i costi per fustelle e trasporto: 
+?Diluizione 100%: Cliente non paga fustella (ammortizzata altrove). 
+?O includi come "contributo" nella quotazione.
+?Dropdown Selezione Fustella: Input testo iniziale (es. digita "55") filtra automaticamente varianti +/-1 mm (mostra fustelle che iniziano con 54/56). Permette al cliente di riutilizzare fustelle esistenti (nessun costo extra). 
+?Pulsante Forza Descrizione: Override per corrispondenze vicine (es. usa fustella 152 mm ma descrivi come 151 mm per cliente). 
+?Visualizzazione Fustella: Genera automaticamente disegno fustella sul record risorsa, o link a scheda tecnica dettagliata con breakdown costi completi.
+3.Riepilogo Quotazione e Prezzi 
+?Per ogni fascia quantità: Scheda produzione con margine standard ~25%. 
+?Tabella Breakdown (Formato Suggerito):
+Elemento Costo/Prezzo	Descrizione	Calcolato Automaticamente?
+Costo Operatore	Manodopera per produzione	Sì
+Costo Produzione	Materiali + tempo macchina	Sì
+Costo Fustella	Ammortizzato o pieno	Sì (diluibile)
+Costo Unitario Etichetta	Totale costi / num etichette	Sì
+Prezzo Unitario Vendita	Costo + 25% margine + ricarico	Sì
+Provvigione	es. 5% su 35% ricarico	Configurabile
+Sconto	Applicato post-margine	Manuale
+?
+?Dal prezzo unitario: Aggiungi provvigione in base al ricarico (es. 35% ricarico ? 5% provvigione). 
+?Sconti: Regola automaticamente provvigione; se sotto soglia, attiva pulsante "Richiesta Special Price".
+4.Output 
+?Genera PDF: Pulsante per esportare quotazione completa con riepiloghi, schede e anteprime. 
+?(Nota: Include riferimento a image1.jpeg – probabilmente un'anteprima PDF di esempio o diagramma.)
+Vantaggi e Note
+?Focus Automazione: Riduce input manuali per specifiche, costi e anteprime; garantisce consistenza (es. conformità tecnica). 
+?Flessibilità: Override manuali (es. forza desc, diluisc costi) per negoziazioni cliente. 
+?Integrazione: Si collega ad articoli Odoo, quotazioni e ordini produzione. Potenziale per calcoli in tempo reale (es. pesi, adattamenti) per accelerare le quotazioni. 
+?Miglioramenti Suggeriti: Chiarire timing selezione macchina; migliorare ricerca fustelle per matching fuzzy; aggiungere gestione errori per non-multipli.
+

@@ -67,10 +67,12 @@
         <field name="context">{'default_company_id': active_company}</field>
     </record>
 
-    <!-- Configuration Menu -->
+    <!-- Configuration Menu - Temporarily disabled -->
+    <!--
     <menuitem id="menu_label_config"
               name="Configuration"
-              parent="label_quotation.menu_label_quotation_config"
+              parent="menu_label_quotation_config"
               action="action_label_config"
               sequence="10"/>
+    -->
 </odoo>

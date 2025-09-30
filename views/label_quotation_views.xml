@@ -1,165 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Label Quotation Tree View -->
-    <record id="view_label_quotation_tree" model="ir.ui.view">
-        <field name="name">label.quotation.tree</field>
-        <field name="model">label.quotation</field>
-        <field name="arch" type="xml">
-            <tree string="Label Quotations">
-                <field name="name"/>
-                <field name="partner_id"/>
-                <field name="date"/>
-                <field name="label_width"/>
-                <field name="label_height"/>
-                <field name="total_quantity"/>
-                <field name="total_cost"/>
-                <field name="selling_price"/>
-                <field name="state"/>
-            </tree>
-        </field>
-    </record>
+    <data>
+        <!-- Label Quotation List View -->
+        <record id="view_label_quotation_list" model="ir.ui.view">
+            <field name="name">label.quotation.list</field>
+            <field name="model">label.quotation</field>
+            <field name="arch" type="xml">
+                <list string="Label Quotations">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="date"/>
+                    <field name="valid_until"/>
+                    <field name="state"/>
+                    <field name="total_quantity"/>
+                    <field name="total_cost"/>
+                    <field name="selling_price"/>
+                </list>
+            </field>
+        </record>
 
-    <!-- Label Quotation Form View -->
-    <record id="view_label_quotation_form" model="ir.ui.view">
-        <field name="name">label.quotation.form</field>
-        <field name="model">label.quotation</field>
-        <field name="arch" type="xml">
-            <form string="Label Quotation">
-                <header>
-                    <button name="action_send_quotation" type="object" string="Send" class="btn-primary" invisible="state != 'draft'"/>
-                    <button name="action_accept_quotation" type="object" string="Accept" class="btn-success" invisible="state != 'sent'"/>
-                    <button name="action_reject_quotation" type="object" string="Reject" class="btn-secondary" invisible="state != 'sent'"/>
-                    <button name="action_cancel_quotation" type="object" string="Cancel" class="btn-secondary" invisible="state in ['accepted', 'cancelled']"/>
-                    <button name="action_generate_pdf" type="object" string="Generate PDF" class="btn-info" icon="fa-file-pdf-o"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,accepted"/>
-                </header>
-                <sheet>
-                    <div class="oe_button_box" name="button_box">
-                        <button name="%(sale.action_orders)d" type="action" class="oe_stat_button" icon="fa-shopping-cart" invisible="not sale_order_id">
-                            <field name="sale_order_id" widget="statinfo" string="Sale Order"/>
-                        </button>
-                    </div>
-                    <div class="oe_title">
-                        <h1>
-                            <field name="name" readonly="1"/>
-                        </h1>
-                    </div>
-                    <group>
-                        <group>
-                            <field name="partner_id"/>
-                            <field name="date"/>
-                            <field name="valid_until"/>
-                        </group>
-                        <group>
-                            <field name="sale_order_id" readonly="1"/>
-                        </group>
-                    </group>
-                    
-                    <notebook>
-                        <page string="Label Specifications">
-                            <group>
-                                <group>
-                                    <field name="label_width"/>
-                                    <field name="label_height"/>
-                                    <field name="interspace"/>
-                                    <field name="tracks"/>
-                                </group>
-                                <group>
-                                    <field name="carta_id"/>
-                                    <field name="fustella_id"/>
-                                    <field name="macchina_id"/>
-                                </group>
-                            </group>
-                            <group>
-                                <group>
-                                    <field name="total_quantity"/>
-                                    <field name="linear_length" readonly="1"/>
-                                    <field name="web_width" readonly="1"/>
-                                </group>
-                                <group>
-                                    <field name="label_area_sqm" readonly="1"/>
-                                    <field name="total_area_sqm" readonly="1"/>
-                                    <field name="yield_percentage" readonly="1"/>
-                                </group>
-                            </group>
-                        </page>
+        <!-- Label Quotation Form View -->
+        <record id="view_label_quotation_form" model="ir.ui.view">
+            <field name="name">label.quotation.form</field>
+            <field name="model">label.quotation</field>
+            <field name="arch" type="xml">
+                <form string="Label Quotation">
+                    <header>
+                        <button name="action_send_quotation" type="object" string="Send" class="btn-primary" invisible="state != 'draft'"/>
+                        <button name="action_accept_quotation" type="object" string="Accept" class="btn-primary" invisible="state != 'sent'"/>
+                        <button name="action_reject_quotation" type="object" string="Reject" class="btn-secondary" invisible="state != 'sent'"/>
+                        <button name="action_cancel_quotation" type="object" string="Cancel" class="btn-secondary" invisible="state in ['accepted', 'rejected', 'cancelled']"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,sent,accepted"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
                         
-                        <page string="Cost Calculation">
-                            <group>
-                                <group>
-                                    <field name="paper_cost" readonly="1"/>
-                                    <field name="die_cost" readonly="1"/>
-                                    <field name="machine_cost" readonly="1"/>
-                                    <field name="total_cost" readonly="1"/>
-                                </group>
-                                <group>
-                                    <field name="cost_per_label" readonly="1"/>
-                                    <field name="cost_per_sqm" readonly="1"/>
-                                    <field name="margin_percentage"/>
-                                    <field name="selling_price" readonly="1"/>
-                                    <field name="price_per_label" readonly="1"/>
-                                </group>
+                        <group>
+                            <group string="Customer Information">
+                                <field name="partner_id"/>
+                                <field name="date"/>
+                                <field name="valid_until"/>
                             </group>
-                        </page>
+                            <group string="Label Specifications">
+                                <field name="label_width"/>
+                                <field name="label_height"/>
+                                <field name="interspace"/>
+                                <field name="tracks"/>
+                                <field name="total_quantity"/>
+                            </group>
+                        </group>
                         
-                        <page string="Notes">
-                            <field name="notes" placeholder="Additional notes for the quotation..."/>
-                        </page>
-                    </notebook>
-                </sheet>
-            </form>
-        </field>
-    </record>
+                        <group>
+                            <group string="Material &amp; Equipment">
+                                <field name="carta_id"/>
+                                <field name="fustella_id"/>
+                                <field name="macchina_id"/>
+                            </group>
+                            <group string="Cost Summary">
+                                <field name="paper_cost"/>
+                                <field name="die_cost"/>
+                                <field name="machine_cost"/>
+                                <field name="total_cost"/>
+                                <field name="margin_percentage"/>
+                                <field name="selling_price"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Production Details">
+                                <group>
+                                    <group>
+                                        <field name="web_width"/>
+                                        <field name="linear_length"/>
+                                        <field name="yield_percentage"/>
+                                    </group>
+                                    <group>
+                                        <field name="label_area_sqm"/>
+                                        <field name="total_area_sqm"/>
+                                        <field name="cost_per_label"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes" placeholder="Additional notes or special requirements..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <!-- Label Quotation Search View -->
-    <record id="view_label_quotation_search" model="ir.ui.view">
-        <field name="name">label.quotation.search</field>
-        <field name="model">label.quotation</field>
-        <field name="arch" type="xml">
-            <search string="Search Label Quotations">
-                <field name="name"/>
-                <field name="partner_id"/>
-                <field name="carta_id"/>
-                <field name="fustella_id"/>
-                <field name="macchina_id"/>
-                <separator/>
-                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
-                <filter string="Sent" name="sent" domain="[('state', '=', 'sent')]"/>
-                <filter string="Accepted" name="accepted" domain="[('state', '=', 'accepted')]"/>
-                <filter string="Rejected" name="rejected" domain="[('state', '=', 'rejected')]"/>
-                <separator/>
-                <filter string="This Month" name="this_month" domain="[('date', '>=', (context_today() - relativedelta(months=1)).strftime('%Y-%m-01')), ('date', '&lt;', (context_today() + relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
-                <separator/>
-                <group expand="0" string="Group By">
-                    <filter string="Customer" name="group_partner" context="{'group_by': 'partner_id'}"/>
-                    <filter string="State" name="group_state" context="{'group_by': 'state'}"/>
-                    <filter string="Date" name="group_date" context="{'group_by': 'date'}"/>
-                </group>
-            </search>
-        </field>
-    </record>
-
-    <!-- Label Quotation Action -->
-    <record id="action_label_quotation" model="ir.actions.act_window">
-        <field name="name">Label Quotations</field>
-        <field name="res_model">label.quotation</field>
-        <field name="view_mode">tree,form</field>
-        <field name="search_view_id" ref="view_label_quotation_search"/>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Create your first label quotation!
-            </p>
-            <p>
-                Create quotations for blank label production with automatic
-                cost calculations based on materials, dies, and machine overhead.
-            </p>
-        </field>
-    </record>
-
-    <!-- Label Quotation Menu -->
-    <menuitem id="menu_label_quotation"
-              name="Label Quotations"
-              parent="label_quotation.menu_label_quotation_main"
-              action="action_label_quotation"
-              sequence="1"/>
+        <!-- Label Quotation Action -->
+        <record id="action_label_quotation" model="ir.actions.act_window">
+            <field name="name">Label Quotations</field>
+            <field name="res_model">label.quotation</field>
+            <field name="view_mode">list,form</field>
+        </record>
+    </data>
 </odoo>

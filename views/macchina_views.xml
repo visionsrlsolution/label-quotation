@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Machine Tree View -->
-    <record id="view_macchina_tree" model="ir.ui.view">
-        <field name="name">label.macchina.tree</field>
+    <!-- Machine List View -->
+    <record id="view_macchina_list" model="ir.ui.view">
+        <field name="name">label.macchina.list</field>
         <field name="model">label.macchina</field>
         <field name="arch" type="xml">
-            <tree string="Machines">
+            <list string="Machines">
                 <field name="code"/>
                 <field name="name"/>
                 <field name="machine_type"/>
@@ -14,7 +14,7 @@
                 <field name="max_web_width"/>
                 <field name="location"/>
                 <field name="active"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -29,11 +29,11 @@
                     <button name="toggle_active" type="object" string="Unarchive" class="btn-secondary" invisible="active"/>
                 </header>
                 <sheet>
-                    <div class="oe_button_box" name="button_box">
-                        <button name="%(label_quotation.action_label_quotation)d" type="action" class="oe_stat_button" icon="fa-calculator">
+                    <!-- <div class="oe_button_box" name="button_box">
+                        <button name="%(action_label_quotation)d" type="action" class="oe_stat_button" icon="fa-calculator">
                             <field name="id" widget="statinfo" string="Quotations"/>
                         </button>
-                    </div>
+                    </div> -->
                     <div class="oe_title">
                         <h1>
                             <field name="name" placeholder="Machine Name"/>
@@ -47,27 +47,31 @@
                             <field name="model"/>
                             <field name="max_speed"/>
                             <field name="max_web_width"/>
+                            <field name="setup_time"/>
+                            <field name="efficiency_factor"/>
                         </group>
                         <group>
-                            <field name="setup_time"/>
                             <field name="setup_cost_per_hour"/>
                             <field name="production_cost_per_hour"/>
                             <field name="overhead_percentage"/>
-                            <field name="efficiency_factor"/>
+                            <field name="energy_cost_per_hour"/>
+                            <field name="operator_cost_per_hour"/>
+                            <field name="serial_number"/>
+                            <field name="purchase_date"/>
+                            <field name="installation_date"/>
                         </group>
                     </group>
                     <group>
                         <group>
                             <field name="maintenance_cost_per_month"/>
                             <field name="depreciation_cost_per_month"/>
-                            <field name="energy_cost_per_hour"/>
-                            <field name="operator_cost_per_hour"/>
+                            <field name="last_maintenance_date"/>
+                            <field name="next_maintenance_date"/>
                         </group>
                         <group>
                             <field name="location"/>
-                            <field name="installation_date"/>
-                            <field name="last_maintenance_date"/>
-                            <field name="next_maintenance_date"/>
+                            <field name="hourly_cost" readonly="1"/>
+                            <field name="setup_cost" readonly="1"/>
                         </group>
                     </group>
                     <group>
@@ -94,9 +98,6 @@
                 <filter string="Active" name="active" domain="[('active', '=', True)]"/>
                 <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                 <separator/>
-                <filter string="Vega+" name="vega_plus" domain="[('machine_type', '=', 'vega_plus')]"/>
-                <filter string="Digicompact" name="digicompact" domain="[('machine_type', '=', 'digicompact')]"/>
-                <separator/>
                 <group expand="0" string="Group By">
                     <filter string="Machine Type" name="group_machine_type" context="{'group_by': 'machine_type'}"/>
                     <filter string="Manufacturer" name="group_manufacturer" context="{'group_by': 'manufacturer'}"/>
@@ -110,23 +111,26 @@
     <record id="action_macchina" model="ir.actions.act_window">
         <field name="name">Machines</field>
         <field name="res_model">label.macchina</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id" ref="view_macchina_search"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first machine!
             </p>
             <p>
-                Define the die-cutting machines used for label production including
+                Define the production machines used for label manufacturing including
                 specifications, costs, and operational parameters.
             </p>
         </field>
     </record>
 
-    <!-- Machine Menu -->
+    <!-- Machines Menu - Temporarily disabled -->
+    <!--
     <menuitem id="menu_macchina"
               name="Machines"
-              parent="label_quotation.menu_label_quotation_main"
+              parent="menu_label_quotation_config"
               action="action_macchina"
               sequence="30"/>
+    -->
+
 </odoo>

@@ -5,43 +5,49 @@
         <record id="demo_fustella_lr1" model="label.fustella">
             <field name="name">Presente FUSTELLA 100x80mm</field>
             <field name="code">LR1</field>
-            <field name="label_width">100</field>
-            <field name="label_height">80</field>
-            <field name="interspace">3.2</field>
-            <field name="tracks">1</field>
-            <field name="die_type">existing</field>
-            <field name="cost">1500</field>
-            <field name="amortization_quantity">1000000</field>
-            <field name="status">present</field>
-            <field name="special_features">standard_heights</field>
+            <field name="width">100</field>
+            <field name="length">80</field>
+            <field name="die_type">rotary</field>
+            <field name="repeat_length">83.2</field>
+            <field name="max_tracks">1</field>
+            <field name="cutting_force_required">2.5</field>
+            <field name="stripping_difficulty">easy</field>
+            <field name="expected_lifetime_cuts">1000000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.0015</field>
+            <field name="setup_time">0.25</field>
         </record>
 
         <record id="demo_fustella_lr2" model="label.fustella">
             <field name="name">Presente FUSTELLA 149x210mm</field>
             <field name="code">LR2</field>
-            <field name="label_width">149</field>
-            <field name="label_height">210</field>
-            <field name="interspace">4.31</field>
-            <field name="tracks">2</field>
-            <field name="die_type">existing</field>
-            <field name="cost">2000</field>
-            <field name="amortization_quantity">1000000</field>
-            <field name="status">present</field>
-            <field name="special_features">horizontal_scoring</field>
+            <field name="width">149</field>
+            <field name="length">210</field>
+            <field name="die_type">rotary</field>
+            <field name="repeat_length">214.31</field>
+            <field name="max_tracks">2</field>
+            <field name="cutting_force_required">4.0</field>
+            <field name="stripping_difficulty">medium</field>
+            <field name="expected_lifetime_cuts">1000000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.002</field>
+            <field name="setup_time">0.33</field>
         </record>
 
         <record id="demo_fustella_ls17" model="label.fustella">
             <field name="name">Presente FUSTELLA 100x200mm</field>
             <field name="code">LS17</field>
-            <field name="label_width">100</field>
-            <field name="label_height">200</field>
-            <field name="interspace">3.2</field>
-            <field name="tracks">4</field>
-            <field name="die_type">existing</field>
-            <field name="cost">1800</field>
-            <field name="amortization_quantity">1000000</field>
-            <field name="status">present</field>
-            <field name="special_features">standard_heights</field>
+            <field name="width">100</field>
+            <field name="length">200</field>
+            <field name="die_type">rotary</field>
+            <field name="repeat_length">203.2</field>
+            <field name="max_tracks">4</field>
+            <field name="cutting_force_required">3.5</field>
+            <field name="stripping_difficulty">medium</field>
+            <field name="expected_lifetime_cuts">1000000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.0018</field>
+            <field name="setup_time">0.3</field>
         </record>
 
         <!-- Demo Customers -->

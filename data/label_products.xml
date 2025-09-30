@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Label Materials as Products -->
+        
+        <!-- Thermal Paper Product -->
+        <record id="product_thermal_fsc" model="product.template">
+            <field name="name">Thermal FSC</field>
+            <field name="default_code">CATEA02</field>
+            <field name="categ_id" ref="product_category_label_materials"/>
+            <field name="type">product</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">True</field>
+            <field name="list_price">0.85</field>
+            <field name="standard_price">0.65</field>
+            <field name="is_label_material">True</field>
+            <field name="paper_type">thermal</field>
+            <field name="grammage">146</field>
+            <field name="thickness">122</field>
+            <field name="adhesive_type">hot_melt</field>
+            <field name="adhesive_strength">standard</field>
+            <field name="max_width">425</field>
+            <field name="max_length">4000</field>
+            <field name="waste_factor">4.0</field>
+            <field name="description">FSC certified thermal paper with hot melt adhesive</field>
+        </record>
+
+        <!-- Vellum Paper Product -->
+        <record id="product_vellum_neutro" model="product.template">
+            <field name="name">Vellum Neutro FSC</field>
+            <field name="default_code">CAVA03</field>
+            <field name="categ_id" ref="product_category_label_materials"/>
+            <field name="type">product</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">True</field>
+            <field name="list_price">0.65</field>
+            <field name="standard_price">0.45</field>
+            <field name="is_label_material">True</field>
+            <field name="paper_type">vellum</field>
+            <field name="grammage">136</field>
+            <field name="thickness">125</field>
+            <field name="adhesive_type">hot_melt</field>
+            <field name="adhesive_strength">standard</field>
+            <field name="max_width">325</field>
+            <field name="max_length">4000</field>
+            <field name="waste_factor">5.0</field>
+            <field name="description">FSC certified vellum paper with hot melt adhesive</field>
+        </record>
+
+        <!-- Label Machine Product -->
+        <record id="product_vega_plus_lf450" model="product.template">
+            <field name="name">Prati Vega Plus LF450</field>
+            <field name="default_code">VEGA_LF450</field>
+            <field name="categ_id" ref="product_category_label_machines"/>
+            <field name="type">service</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">False</field>
+            <field name="list_price">80.00</field>
+            <field name="standard_price">60.00</field>
+            <field name="is_label_machine">True</field>
+            <field name="machine_type">vega_plus</field>
+            <field name="manufacturer">Prati</field>
+            <field name="model">LF450</field>
+            <field name="max_speed">300</field>
+            <field name="min_speed">20</field>
+            <field name="max_web_width">400</field>
+            <field name="min_web_width">50</field>
+            <field name="setup_time">30</field>
+            <field name="max_tracks">6</field>
+            <field name="precision_rating">high</field>
+            <field name="quality_factor">1.2</field>
+            <field name="description">High-speed die-cutting machine for labels up to 400mm width</field>
+        </record>
+
+        <!-- Label Die Product -->
+        <record id="product_die_rect_50x30" model="product.template">
+            <field name="name">Rectangle 50x30mm</field>
+            <field name="default_code">RECT_50_30</field>
+            <field name="categ_id" ref="product_category_label_dies"/>
+            <field name="type">service</field>
+            <field name="sale_ok">True</field>
+            <field name="purchase_ok">True</field>
+            <field name="list_price">0.50</field>
+            <field name="standard_price">0.35</field>
+            <field name="is_label_die">True</field>
+            <field name="die_type">rotary</field>
+            <field name="die_width">50</field>
+            <field name="die_length">30</field>
+            <field name="repeat_length">32</field>
+            <field name="die_max_tracks">8</field>
+            <field name="cutting_force_required">2.5</field>
+            <field name="stripping_difficulty">easy</field>
+            <field name="expected_lifetime_cuts">100000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.50</field>
+            <field name="description">Standard rectangular die for small labels</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Label Quotation Product Form View -->
+    <record id="label_quotation_product_form" model="ir.ui.view">
+        <field name="name">label.quotation.product.form</field>
+        <field name="model">label.quotation.product</field>
+        <field name="inherit_id" ref="label_quotation.label_quotation_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='material_equipment']" position="replace">
+                <group string="Material and Equipment" name="material_equipment">
+                    <group>
+                        <field name="material_product_id" options="{'no_create': True}"/>
+                        <field name="machine_product_id" options="{'no_create': True}"/>
+                        <field name="die_product_id" options="{'no_create': True}"/>
+                    </group>
+                    <group>
+                        <field name="carta_id" attrs="{'invisible': [('material_product_id', '!=', False)]}"/>
+                        <field name="macchina_id" attrs="{'invisible': [('machine_product_id', '!=', False)]}"/>
+                        <field name="fustella_id" attrs="{'invisible': [('die_product_id', '!=', False)]}"/>
+                    </group>
+                </group>
+            </xpath>
+            
+            <xpath expr="//page[@name='costs']" position="after">
+                <page string="Product Integration" name="product_integration">
+                    <group>
+                        <group string="Material Data">
+                            <field name="material_data" widget="json" readonly="1"/>
+                        </group>
+                        <group string="Machine Data">
+                            <field name="machine_data" widget="json" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Die Data">
+                            <field name="die_data" widget="json" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Label Quotation Product Tree View -->
+    <record id="label_quotation_product_tree" model="ir.ui.view">
+        <field name="name">label.quotation.product.tree</field>
+        <field name="model">label.quotation.product</field>
+        <field name="inherit_id" ref="label_quotation.label_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='carta_id']" position="after">
+                <field name="material_product_id" optional="hide"/>
+                <field name="machine_product_id" optional="hide"/>
+                <field name="die_product_id" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Label Quotation Product Search View -->
+    <record id="label_quotation_product_search" model="ir.ui.view">
+        <field name="name">label.quotation.product.search</field>
+        <field name="model">label.quotation.product</field>
+        <field name="inherit_id" ref="label_quotation.label_quotation_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='carta_id']" position="after">
+                <field name="material_product_id" string="Material Product" filter_domain="[('material_product_id', 'ilike', self)]"/>
+                <field name="machine_product_id" string="Machine Product" filter_domain="[('machine_product_id', 'ilike', self)]"/>
+                <field name="die_product_id" string="Die Product" filter_domain="[('die_product_id', 'ilike', self)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Action for Label Quotation Product -->
+    <record id="action_label_quotation_product" model="ir.actions.act_window">
+        <field name="name">Label Quotations (Product Integration)</field>
+        <field name="res_model">label.quotation.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first label quotation with product integration!
+            </p>
+            <p>
+                This version of label quotations integrates directly with Odoo products,
+                allowing you to use materials, machines, and dies from your product catalog.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item for Product Integration -->
+    <menuitem id="menu_label_quotation_product" 
+              name="Quotations (Product Integration)" 
+              parent="label_quotation.menu_label_quotation_main" 
+              action="action_label_quotation_product" 
+              sequence="5"/>
+</odoo>
