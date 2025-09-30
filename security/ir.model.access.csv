@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_label_carta_user,label.carta.user,model_label_carta,label_quotation.group_label_quotation_user,1,1,1,0
-access_label_fustella_user,label.fustella.user,model_label_fustella,label_quotation.group_label_quotation_user,1,1,1,0
-access_label_macchina_user,label.macchina.user,model_label_macchina,label_quotation.group_label_quotation_user,1,1,1,0
-access_label_quotation_user,label.quotation.user,model_label_quotation,label_quotation.group_label_quotation_user,1,1,1,0
-access_label_config_user,label.config.user,model_label_config,label_quotation.group_label_quotation_user,1,0,0,0
+access_label_carta_user,label.carta.user,model_label_carta,label-quotation.group_label_quotation_user,1,1,1,0
+access_label_fustella_user,label.fustella.user,model_label_fustella,label-quotation.group_label_quotation_user,1,1,1,0
+access_label_macchina_user,label.macchina.user,model_label_macchina,label-quotation.group_label_quotation_user,1,1,1,0
+access_label_quotation_user,label.quotation.user,model_label_quotation,label-quotation.group_label_quotation_user,1,1,1,0
+access_label_config_user,label.config.user,model_label_config,label-quotation.group_label_quotation_user,1,0,0,0

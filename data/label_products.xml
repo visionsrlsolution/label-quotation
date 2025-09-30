@@ -7,7 +7,7 @@
         <record id="product_thermal_fsc" model="product.template">
             <field name="name">Thermal FSC</field>
             <field name="default_code">CATEA02</field>
-            <field name="categ_id" ref="product_category_label_materials"/>
+            <field name="categ_id" ref="label-quotation.product_category_label_materials"/>
             <field name="type">product</field>
             <field name="sale_ok">True</field>
             <field name="purchase_ok">True</field>
@@ -29,7 +29,7 @@
         <record id="product_vellum_neutro" model="product.template">
             <field name="name">Vellum Neutro FSC</field>
             <field name="default_code">CAVA03</field>
-            <field name="categ_id" ref="product_category_label_materials"/>
+            <field name="categ_id" ref="label-quotation.product_category_label_materials"/>
             <field name="type">product</field>
             <field name="sale_ok">True</field>
             <field name="purchase_ok">True</field>
@@ -51,7 +51,7 @@
         <record id="product_vega_plus_lf450" model="product.template">
             <field name="name">Prati Vega Plus LF450</field>
             <field name="default_code">VEGA_LF450</field>
-            <field name="categ_id" ref="product_category_label_machines"/>
+            <field name="categ_id" ref="label-quotation.product_category_label_machines"/>
             <field name="type">service</field>
             <field name="sale_ok">True</field>
             <field name="purchase_ok">False</field>
@@ -76,7 +76,7 @@
         <record id="product_die_rect_50x30" model="product.template">
             <field name="name">Rectangle 50x30mm</field>
             <field name="default_code">RECT_50_30</field>
-            <field name="categ_id" ref="product_category_label_dies"/>
+            <field name="categ_id" ref="label-quotation.product_category_label_dies"/>
             <field name="type">service</field>
             <field name="sale_ok">True</field>
             <field name="purchase_ok">True</field>

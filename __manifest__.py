@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Label Quotation',
+    'name': 'label-quotation',
     'version': '19.0.1.0.0',
     'category': 'Manufacturing',
     'summary': 'Label quotation system with product integration',

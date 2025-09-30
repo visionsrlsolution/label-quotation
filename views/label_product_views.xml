@@ -34,7 +34,7 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_label_material', '=', True)]</field>
-        <field name="context">{'default_is_label_material': True, 'default_categ_id': ref('product_category_label_materials')}</field>
+        <field name="context">{'default_is_label_material': True, 'default_categ_id': ref('label-quotation.product_category_label_materials')}</field>
     </record>
 
     <!-- Action for Label Machines -->
@@ -43,7 +43,7 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_label_machine', '=', True)]</field>
-        <field name="context">{'default_is_label_machine': True, 'default_categ_id': ref('product_category_label_machines')}</field>
+        <field name="context">{'default_is_label_machine': True, 'default_categ_id': ref('label-quotation.product_category_label_machines')}</field>
     </record>
 
     <!-- Action for Label Dies -->
@@ -52,6 +52,6 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('is_label_die', '=', True)]</field>
-        <field name="context">{'default_is_label_die': True, 'default_categ_id': ref('product_category_label_dies')}</field>
+        <field name="context">{'default_is_label_die': True, 'default_categ_id': ref('label-quotation.product_category_label_dies')}</field>
     </record>
 </odoo>
