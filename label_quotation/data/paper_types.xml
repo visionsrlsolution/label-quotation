@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Thermal Paper Types -->
+        <record id="carta_thermal_fsc" model="label.carta">
+            <field name="name">Thermal FSC</field>
+            <field name="code">CATEA02</field>
+            <field name="paper_type">thermal</field>
+            <field name="grammage">146</field>
+            <field name="thickness">122</field>
+            <field name="adhesive_type">hot_melt</field>
+            <field name="adhesive_strength">standard</field>
+            <field name="max_width">425</field>
+            <field name="max_length">4000</field>
+            <field name="cost_per_sqm">0.85</field>
+            <field name="waste_factor">4.0</field>
+            <field name="minimum_order_quantity">1000</field>
+            <field name="roll_width_standard">420</field>
+            <field name="roll_length_standard">2000</field>
+            <field name="liner_type">glassine</field>
+            <field name="liner_thickness">58</field>
+            <field name="print_compatibility">direct_thermal</field>
+            <field name="temperature_range_min">-10</field>
+            <field name="temperature_range_max">60</field>
+            <field name="shelf_life_months">24</field>
+            <field name="notes">FSC certified thermal paper with hot melt adhesive</field>
+        </record>
+
+        <record id="carta_thermal_eco" model="label.carta">
+            <field name="name">Thermal ECO BPA FREE FSC</field>
+            <field name="code">THERMAL_ECO</field>
+            <field name="paper_type">thermal</field>
+            <field name="grammage">62</field>
+            <field name="thickness">65</field>
+            <field name="adhesive_type">hot_melt</field>
+            <field name="adhesive_strength">strong</field>
+            <field name="max_width">400</field>
+            <field name="max_length">4000</field>
+            <field name="cost_per_sqm">0.75</field>
+            <field name="waste_factor">3.5</field>
+            <field name="minimum_order_quantity">500</field>
+            <field name="roll_width_standard">400</field>
+            <field name="roll_length_standard">2500</field>
+            <field name="liner_type">glassine</field>
+            <field name="liner_thickness">62</field>
+            <field name="print_compatibility">direct_thermal</field>
+            <field name="temperature_range_min">-5</field>
+            <field name="temperature_range_max">50</field>
+            <field name="shelf_life_months">18</field>
+            <field name="notes">BPA-free thermal paper with strong adhesive</field>
+        </record>
+
+        <!-- Vellum Paper Types -->
+        <record id="carta_vellum_neutro" model="label.carta">
+            <field name="name">Vellum Neutro FSC</field>
+            <field name="code">CAVA03</field>
+            <field name="paper_type">vellum</field>
+            <field name="grammage">136</field>
+            <field name="thickness">125</field>
+            <field name="adhesive_type">hot_melt</field>
+            <field name="adhesive_strength">standard</field>
+            <field name="max_width">325</field>
+            <field name="max_length">4000</field>
+            <field name="cost_per_sqm">0.65</field>
+            <field name="waste_factor">5.0</field>
+            <field name="minimum_order_quantity">800</field>
+            <field name="roll_width_standard">320</field>
+            <field name="roll_length_standard">1500</field>
+            <field name="liner_type">glassine</field>
+            <field name="liner_thickness">62</field>
+            <field name="print_compatibility">thermal_transfer</field>
+            <field name="temperature_range_min">-5</field>
+            <field name="temperature_range_max">80</field>
+            <field name="shelf_life_months">36</field>
+            <field name="notes">FSC certified vellum paper with hot melt adhesive</field>
+        </record>
+
+        <record id="carta_vellum_herma" model="label.carta">
+            <field name="name">Vellum HERMA white</field>
+            <field name="code">HERMA_601</field>
+            <field name="paper_type">vellum</field>
+            <field name="grammage">68</field>
+            <field name="thickness">66</field>
+            <field name="adhesive_type">hot_melt</field>
+            <field name="adhesive_strength">standard</field>
+            <field name="max_width">400</field>
+            <field name="max_length">4000</field>
+            <field name="cost_per_sqm">0.55</field>
+            <field name="waste_factor">4.5</field>
+            <field name="minimum_order_quantity">600</field>
+            <field name="roll_width_standard">400</field>
+            <field name="roll_length_standard">2000</field>
+            <field name="liner_type">glassine</field>
+            <field name="liner_thickness">58</field>
+            <field name="print_compatibility">thermal_transfer</field>
+            <field name="temperature_range_min">0</field>
+            <field name="temperature_range_max">70</field>
+            <field name="shelf_life_months">24</field>
+            <field name="notes">HERMA white vellum paper 601/62D/523</field>
+        </record>
+    </data>
+</odoo>

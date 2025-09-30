@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Data Creation Form View -->
+    <record id="data_creation_form" model="ir.ui.view">
+        <field name="name">data.creation.form</field>
+        <field name="model">data.creation</field>
+        <field name="arch" type="xml">
+            <form string="Create Label Quotation Data">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Label Quotation Data Creation</h1>
+                    </div>
+                    <div class="oe_span12">
+                        <p>This will create all the necessary data for the Label Quotation system:</p>
+                        <ul>
+                            <li>Product Categories (Label Materials, Label Machines, Label Dies, Label Services)</li>
+                            <li>Sample Products (Materials, Machines, Dies)</li>
+                            <li>All required configurations</li>
+                        </ul>
+                        <p><strong>Note:</strong> This will only create data that doesn't already exist.</p>
+                    </div>
+                    <div class="oe_span12" style="margin-top: 20px;">
+                        <button name="create_label_data" type="object" string="Create Data" class="btn-primary"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Data Creation Action -->
+    <record id="action_data_creation" model="ir.actions.act_window">
+        <field name="name">Create Label Quotation Data</field>
+        <field name="res_model">data.creation</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Add to main menu -->
+    <menuitem id="menu_data_creation" 
+              name="Create Data" 
+              parent="menu_label_quotation_dashboard" 
+              action="action_data_creation" 
+              sequence="100"/>
+</odoo>

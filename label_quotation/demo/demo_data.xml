@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Dies -->
+        <record id="demo_fustella_lr1" model="label.fustella">
+            <field name="name">Presente FUSTELLA 100x80mm</field>
+            <field name="code">LR1</field>
+            <field name="width">100</field>
+            <field name="length">80</field>
+            <field name="die_type">rotary</field>
+            <field name="repeat_length">83.2</field>
+            <field name="max_tracks">1</field>
+            <field name="cutting_force_required">2.5</field>
+            <field name="stripping_difficulty">easy</field>
+            <field name="expected_lifetime_cuts">1000000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.0015</field>
+            <field name="setup_time">0.25</field>
+        </record>
+
+        <record id="demo_fustella_lr2" model="label.fustella">
+            <field name="name">Presente FUSTELLA 149x210mm</field>
+            <field name="code">LR2</field>
+            <field name="width">149</field>
+            <field name="length">210</field>
+            <field name="die_type">rotary</field>
+            <field name="repeat_length">214.31</field>
+            <field name="max_tracks">2</field>
+            <field name="cutting_force_required">4.0</field>
+            <field name="stripping_difficulty">medium</field>
+            <field name="expected_lifetime_cuts">1000000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.002</field>
+            <field name="setup_time">0.33</field>
+        </record>
+
+        <record id="demo_fustella_ls17" model="label.fustella">
+            <field name="name">Presente FUSTELLA 100x200mm</field>
+            <field name="code">LS17</field>
+            <field name="width">100</field>
+            <field name="length">200</field>
+            <field name="die_type">rotary</field>
+            <field name="repeat_length">203.2</field>
+            <field name="max_tracks">4</field>
+            <field name="cutting_force_required">3.5</field>
+            <field name="stripping_difficulty">medium</field>
+            <field name="expected_lifetime_cuts">1000000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.0018</field>
+            <field name="setup_time">0.3</field>
+        </record>
+
+        <!-- Demo Customers -->
+        <record id="demo_customer_pastificio" model="res.partner">
+            <field name="name">Pastificio Artigiano Vincenza Mura</field>
+            <field name="is_company">True</field>
+            <field name="customer_rank">1</field>
+            <field name="street">Via Roma 123</field>
+            <field name="city">Milano</field>
+            <field name="zip">20100</field>
+            <field name="country_id" ref="base.it"/>
+            <field name="vat">IT12345678901</field>
+        </record>
+
+        <record id="demo_customer_bitron" model="res.partner">
+            <field name="name">Bitron Service S.p.A.</field>
+            <field name="is_company">True</field>
+            <field name="customer_rank">1</field>
+            <field name="street">Via Industria 45</field>
+            <field name="city">Torino</field>
+            <field name="zip">10100</field>
+            <field name="country_id" ref="base.it"/>
+            <field name="vat">IT98765432109</field>
+        </record>
+
+        <record id="demo_customer_barbero" model="res.partner">
+            <field name="name">Barbero Pietro S.p.A.</field>
+            <field name="is_company">True</field>
+            <field name="customer_rank">1</field>
+            <field name="street">Corso Italia 78</field>
+            <field name="city">Genova</field>
+            <field name="zip">16100</field>
+            <field name="country_id" ref="base.it"/>
+            <field name="vat">IT11223344556</field>
+        </record>
+
+        <!-- Demo Quotations -->
+        <record id="demo_quotation_1" model="label.quotation">
+            <field name="name">LQ0001</field>
+            <field name="partner_id" ref="demo_customer_pastificio"/>
+            <field name="date">2025-01-15</field>
+            <field name="valid_until">2025-02-14</field>
+            <field name="state">sent</field>
+            <field name="label_width">100</field>
+            <field name="label_height">80</field>
+            <field name="interspace">3.2</field>
+            <field name="tracks">1</field>
+            <field name="carta_id" ref="carta_vellum_herma"/>
+            <field name="fustella_id" ref="demo_fustella_lr1"/>
+            <field name="macchina_id" ref="macchina_vega_plus_lf450"/>
+            <field name="total_quantity">50000</field>
+            <field name="margin_percentage">25</field>
+            <field name="notes">Etichette per confezioni pasta artigianale. Consegna entro 15 giorni.</field>
+        </record>
+
+        <record id="demo_quotation_2" model="label.quotation">
+            <field name="name">LQ0002</field>
+            <field name="partner_id" ref="demo_customer_bitron"/>
+            <field name="date">2025-01-16</field>
+            <field name="valid_until">2025-02-15</field>
+            <field name="state">draft</field>
+            <field name="label_width">100</field>
+            <field name="label_height">200</field>
+            <field name="interspace">3.2</field>
+            <field name="tracks">4</field>
+            <field name="carta_id" ref="carta_thermal_eco"/>
+            <field name="fustella_id" ref="demo_fustella_ls17"/>
+            <field name="macchina_id" ref="macchina_vega_plus_lf450"/>
+            <field name="total_quantity">100000</field>
+            <field name="margin_percentage">30</field>
+            <field name="notes">Etichette termiche per componenti elettronici. Richiesta urgente.</field>
+        </record>
+
+        <record id="demo_quotation_3" model="label.quotation">
+            <field name="name">LQ0003</field>
+            <field name="partner_id" ref="demo_customer_barbero"/>
+            <field name="date">2025-01-17</field>
+            <field name="valid_until">2025-02-16</field>
+            <field name="state">accepted</field>
+            <field name="label_width">149</field>
+            <field name="label_height">210</field>
+            <field name="interspace">4.31</field>
+            <field name="tracks">2</field>
+            <field name="carta_id" ref="carta_vellum_neutro"/>
+            <field name="fustella_id" ref="demo_fustella_lr2"/>
+            <field name="macchina_id" ref="macchina_digicompact"/>
+            <field name="total_quantity">25000</field>
+            <field name="margin_percentage">35</field>
+            <field name="notes">Etichette per prodotti alimentari con scoring orizzontale.</field>
+        </record>
+    </data>
+</odoo>

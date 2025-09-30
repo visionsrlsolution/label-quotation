@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Vega+ Machine -->
+        <record id="macchina_vega_plus_lf450" model="label.macchina">
+            <field name="name">Prati Vega Plus LF450</field>
+            <field name="code">VEGA_LF450</field>
+            <field name="machine_type">vega_plus</field>
+            <field name="manufacturer">Prati</field>
+            <field name="model">LF450</field>
+            <field name="max_speed">300</field>
+            <field name="min_speed">20</field>
+            <field name="max_web_width">400</field>
+            <field name="min_web_width">50</field>
+            <field name="setup_time">30</field>
+            <field name="die_change_time">15</field>
+            <field name="material_change_time">10</field>
+            <field name="warm_up_time">5</field>
+            <field name="max_tracks">6</field>
+            <field name="precision_rating">high</field>
+            <field name="quality_factor">1.2</field>
+            <field name="setup_cost_per_hour">50</field>
+            <field name="production_cost_per_hour">80</field>
+            <field name="overhead_percentage">15</field>
+            <field name="efficiency_factor">0.85</field>
+            <field name="maintenance_cost_per_month">600</field>
+            <field name="depreciation_cost_per_month">1200</field>
+            <field name="energy_cost_per_hour">6</field>
+            <field name="operator_cost_per_hour">25</field>
+            <field name="location">Production Line 1</field>
+            <field name="notes">High-speed die-cutting machine for labels up to 400mm width</field>
+        </record>
+
+        <!-- Digicompact Machine -->
+        <record id="macchina_digicompact" model="label.macchina">
+            <field name="name">Prati Digicompact</field>
+            <field name="code">DIGICOMPACT</field>
+            <field name="machine_type">digicompact</field>
+            <field name="manufacturer">Prati</field>
+            <field name="model">Digicompact</field>
+            <field name="max_speed">100</field>
+            <field name="min_speed">15</field>
+            <field name="max_web_width">350</field>
+            <field name="min_web_width">40</field>
+            <field name="setup_time">45</field>
+            <field name="die_change_time">20</field>
+            <field name="material_change_time">15</field>
+            <field name="warm_up_time">8</field>
+            <field name="max_tracks">4</field>
+            <field name="precision_rating">standard</field>
+            <field name="quality_factor">1.0</field>
+            <field name="setup_cost_per_hour">40</field>
+            <field name="production_cost_per_hour">60</field>
+            <field name="overhead_percentage">15</field>
+            <field name="efficiency_factor">0.80</field>
+            <field name="maintenance_cost_per_month">400</field>
+            <field name="depreciation_cost_per_month">800</field>
+            <field name="energy_cost_per_hour">4</field>
+            <field name="operator_cost_per_hour">25</field>
+            <field name="location">Production Line 2</field>
+            <field name="notes">Compact die-cutting machine for smaller label formats</field>
+        </record>
+    </data>
+</odoo>

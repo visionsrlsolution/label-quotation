@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Label Quotation List View -->
+        <record id="view_label_quotation_list" model="ir.ui.view">
+            <field name="name">label.quotation.list</field>
+            <field name="model">label.quotation</field>
+            <field name="arch" type="xml">
+                <list string="Label Quotations">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="date"/>
+                    <field name="valid_until"/>
+                    <field name="state"/>
+                    <field name="total_quantity"/>
+                    <field name="total_cost"/>
+                    <field name="selling_price"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Label Quotation Form View -->
+        <record id="view_label_quotation_form" model="ir.ui.view">
+            <field name="name">label.quotation.form</field>
+            <field name="model">label.quotation</field>
+            <field name="arch" type="xml">
+                <form string="Label Quotation">
+                    <header>
+                        <button name="action_send_quotation" type="object" string="Send" class="btn-primary" invisible="state != 'draft'"/>
+                        <button name="action_accept_quotation" type="object" string="Accept" class="btn-primary" invisible="state != 'sent'"/>
+                        <button name="action_reject_quotation" type="object" string="Reject" class="btn-secondary" invisible="state != 'sent'"/>
+                        <button name="action_cancel_quotation" type="object" string="Cancel" class="btn-secondary" invisible="state in ['accepted', 'rejected', 'cancelled']"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,sent,accepted"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        
+                        <group>
+                            <group string="Customer Information">
+                                <field name="partner_id"/>
+                                <field name="date"/>
+                                <field name="valid_until"/>
+                            </group>
+                            <group string="Label Specifications">
+                                <field name="label_width"/>
+                                <field name="label_height"/>
+                                <field name="interspace"/>
+                                <field name="tracks"/>
+                                <field name="total_quantity"/>
+                            </group>
+                        </group>
+                        
+                        <group>
+                            <group string="Material &amp; Equipment">
+                                <field name="carta_id"/>
+                                <field name="fustella_id"/>
+                                <field name="macchina_id"/>
+                            </group>
+                            <group string="Cost Summary">
+                                <field name="paper_cost"/>
+                                <field name="die_cost"/>
+                                <field name="machine_cost"/>
+                                <field name="total_cost"/>
+                                <field name="margin_percentage"/>
+                                <field name="selling_price"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Production Details">
+                                <group>
+                                    <group>
+                                        <field name="web_width"/>
+                                        <field name="linear_length"/>
+                                        <field name="yield_percentage"/>
+                                    </group>
+                                    <group>
+                                        <field name="label_area_sqm"/>
+                                        <field name="total_area_sqm"/>
+                                        <field name="cost_per_label"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes" placeholder="Additional notes or special requirements..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Label Quotation Action -->
+        <record id="action_label_quotation" model="ir.actions.act_window">
+            <field name="name">Label Quotations</field>
+            <field name="res_model">label.quotation</field>
+            <field name="view_mode">list,form</field>
+        </record>
+    </data>
+</odoo>

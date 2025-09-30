@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Standard Rectangle Dies -->
+        <record id="fustella_rect_50x30" model="label.fustella">
+            <field name="name">Rectangle 50x30mm</field>
+            <field name="code">RECT_50_30</field>
+            <field name="die_type">rotary</field>
+            <field name="width">50</field>
+            <field name="length">30</field>
+            <field name="repeat_length">32</field>
+            <field name="max_tracks">8</field>
+            <field name="cutting_force_required">2.5</field>
+            <field name="stripping_difficulty">easy</field>
+            <field name="expected_lifetime_cuts">100000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.50</field>
+            <field name="setup_time">0.25</field>
+            <field name="notes">Standard rectangular die for small labels</field>
+        </record>
+
+        <record id="fustella_rect_100x60" model="label.fustella">
+            <field name="name">Rectangle 100x60mm</field>
+            <field name="code">RECT_100_60</field>
+            <field name="die_type">rotary</field>
+            <field name="width">100</field>
+            <field name="length">60</field>
+            <field name="repeat_length">62</field>
+            <field name="max_tracks">4</field>
+            <field name="cutting_force_required">4.0</field>
+            <field name="stripping_difficulty">medium</field>
+            <field name="expected_lifetime_cuts">80000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.75</field>
+            <field name="setup_time">0.33</field>
+            <field name="notes">Standard rectangular die for medium labels</field>
+        </record>
+
+        <!-- Shaped Dies -->
+        <record id="fustella_oval_60x40" model="label.fustella">
+            <field name="name">Oval 60x40mm</field>
+            <field name="code">OVAL_60_40</field>
+            <field name="die_type">rotary</field>
+            <field name="width">60</field>
+            <field name="length">40</field>
+            <field name="repeat_length">42</field>
+            <field name="max_tracks">6</field>
+            <field name="cutting_force_required">3.2</field>
+            <field name="stripping_difficulty">difficult</field>
+            <field name="expected_lifetime_cuts">60000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">1.20</field>
+            <field name="setup_time">0.5</field>
+            <field name="notes">Oval shaped die - requires careful stripping</field>
+        </record>
+
+        <record id="fustella_round_d50" model="label.fustella">
+            <field name="name">Round Ø50mm</field>
+            <field name="code">ROUND_D50</field>
+            <field name="die_type">rotary</field>
+            <field name="width">50</field>
+            <field name="length">50</field>
+            <field name="repeat_length">52</field>
+            <field name="max_tracks">6</field>
+            <field name="cutting_force_required">3.8</field>
+            <field name="stripping_difficulty">very_difficult</field>
+            <field name="expected_lifetime_cuts">50000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">1.50</field>
+            <field name="setup_time">0.75</field>
+            <field name="notes">Round die - challenging stripping, requires experienced operator</field>
+        </record>
+
+        <!-- Custom Shape Dies -->
+        <record id="fustella_bottle_80x120" model="label.fustella">
+            <field name="name">Bottle Shape 80x120mm</field>
+            <field name="code">BOTTLE_80_120</field>
+            <field name="die_type">flatbed</field>
+            <field name="width">80</field>
+            <field name="length">120</field>
+            <field name="repeat_length">125</field>
+            <field name="max_tracks">2</field>
+            <field name="cutting_force_required">8.5</field>
+            <field name="stripping_difficulty">very_difficult</field>
+            <field name="expected_lifetime_cuts">30000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">3.00</field>
+            <field name="setup_time">1.0</field>
+            <field name="notes">Complex bottle shape for beverage industry</field>
+        </record>
+
+        <!-- Kiss Cut Dies -->
+        <record id="fustella_kiss_rect_80x50" model="label.fustella">
+            <field name="name">Kiss Cut Rectangle 80x50mm</field>
+            <field name="code">KISS_RECT_80_50</field>
+            <field name="die_type">kiss_cut</field>
+            <field name="width">80</field>
+            <field name="length">50</field>
+            <field name="repeat_length">52</field>
+            <field name="max_tracks">5</field>
+            <field name="cutting_force_required">1.8</field>
+            <field name="stripping_difficulty">easy</field>
+            <field name="expected_lifetime_cuts">150000</field>
+            <field name="current_usage_count">0</field>
+            <field name="cost_per_use">0.35</field>
+            <field name="setup_time">0.2</field>
+            <field name="notes">Kiss cut only - liner stays intact</field>
+        </record>
+    </data>
+</odoo>
+
+
